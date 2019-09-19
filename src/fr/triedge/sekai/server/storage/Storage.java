@@ -1,6 +1,6 @@
 package fr.triedge.sekai.server.storage;
 
-import fr.triedge.sekai.server.model.Model;
+import fr.triedge.sekai.common.model.Model;
 
 public interface Storage {
 

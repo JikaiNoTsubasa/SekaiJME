@@ -4,8 +4,8 @@ import java.io.File;
 
 import javax.xml.bind.JAXBException;
 
+import fr.triedge.sekai.common.model.Model;
 import fr.triedge.sekai.common.utils.XmlHelper;
-import fr.triedge.sekai.server.model.Model;
 
 public class XmlStorage implements Storage{
 	

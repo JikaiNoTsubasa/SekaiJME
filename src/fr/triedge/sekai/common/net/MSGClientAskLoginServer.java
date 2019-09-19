@@ -1,7 +1,9 @@
 package fr.triedge.sekai.common.net;
 
 import com.jme3.network.AbstractMessage;
+import com.jme3.network.serializing.Serializable;
 
+@Serializable
 public class MSGClientAskLoginServer extends AbstractMessage{
 
 	private String username;
