@@ -12,21 +12,23 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.ConfigurationSource;
 import org.apache.logging.log4j.core.config.Configurator;
 
-import com.jme3.network.HostedConnection;
-import com.jme3.network.Message;
-import com.jme3.network.MessageListener;
-import com.jme3.network.Network;
-import com.jme3.network.Server;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
+import com.esotericsoftware.kryonet.Server;
 
 import fr.triedge.sekai.common.model.Model;
 import fr.triedge.sekai.common.model.User;
 import fr.triedge.sekai.common.net.MSGClientAskLoginServer;
+import fr.triedge.sekai.common.net.MSGCode;
+import fr.triedge.sekai.common.net.MSGServerAnswerLogin;
+import fr.triedge.sekai.common.utils.Utils;
 import fr.triedge.sekai.common.utils.XmlHelper;
 import fr.triedge.sekai.server.config.ServerConfig;
 import fr.triedge.sekai.server.storage.Storage;
 import fr.triedge.sekai.server.storage.XmlStorage;
 
-public class SekaiServer implements Runnable, MessageListener<HostedConnection>{
+public class SekaiServer implements Runnable{
 	
 	private static String CONFIG_FILE							= "server/config/server.xml";
 	private static String CONFIG_LOG_LOCATION					= "server/config/log4j2.xml";
@@ -37,8 +39,10 @@ public class SekaiServer implements Runnable, MessageListener<HostedConnection>{
 	private boolean running = true;
 	private Storage storage;
 	private Model model;
+	private long serverStartingTime;
 	
 	private void init() {
+		setServerStartingTime(System.currentTimeMillis());
 		// Init logs
 		try {
 			configureLogging();
@@ -49,8 +53,18 @@ public class SekaiServer implements Runnable, MessageListener<HostedConnection>{
 		try {
 			// Init config
 			config = XmlHelper.loadXml(ServerConfig.class, new File(CONFIG_FILE));
-			server = Network.createServer(config.getPort());
-			server.addMessageListener(this);
+			log.info("Configuration file loaded");
+			server = new Server();
+			registerClasses(server.getKryo());
+			log.debug("Kryo classes registered");
+			server.start();
+			server.bind(config.getPort());
+			server.addListener(new Listener() {
+				public void received (Connection connection, Object message) {
+					messageReceived(connection, message);
+			       }
+			});
+			log.info("Server configured for port: "+config.getPort());
 		} catch (JAXBException | IOException e) {
 			log.error("Cannot initiate server", e);
 		}
@@ -58,9 +72,11 @@ public class SekaiServer implements Runnable, MessageListener<HostedConnection>{
 		// Init storage
 		storage = new XmlStorage();
 		storage.openStorage(STORAGE_LOG_LOCATION);
+		log.info("Storage type: File, located on "+STORAGE_LOG_LOCATION);
 		
 		// Load storage
 		model = storage.loadModel();
+		log.debug("Model loaded");
 		
 		if (model == null) {
 			log.error("Model is null");
@@ -70,14 +86,17 @@ public class SekaiServer implements Runnable, MessageListener<HostedConnection>{
 		log.debug("Server initialized");
 	}
 
+	private void registerClasses(Kryo kryo) {
+		Utils.registerClasses(kryo);
+	}
+
 	@Override
 	public void run() {
 		// Init server
 		init();
-		// Start listening
-		server.start();
 		
-		log.debug("Server running");
+		double res = (System.currentTimeMillis() - getServerStartingTime()) / 1000;
+		log.info("Server started in "+res+" seconds");
 		while (isRunning()) {
 			try {
 				Thread.sleep(1000);
@@ -87,21 +106,31 @@ public class SekaiServer implements Runnable, MessageListener<HostedConnection>{
 		}
 	}
 	
-	@Override
-	public void messageReceived(HostedConnection source, Message mes) {
+	public void messageReceived(Connection source, Object mes) {
+		log.debug("START: messageReceived()");
 		if (mes instanceof MSGClientAskLoginServer) {
-			String username = ((MSGClientAskLoginServer) mes).getUsername();
-			String password = ((MSGClientAskLoginServer) mes).getPassword();
-			
-			User user = retrieveUser(username, password);
-			if (user == null) {
-				// Reply wrong user
-				
-			}else {
-				// Login user
-				
-			}
+			manageLogin(source, (MSGClientAskLoginServer)mes);
 		}
+		log.debug("END: messageReceived()");
+	}
+	
+	private void manageLogin(Connection source, MSGClientAskLoginServer msg) {
+		log.debug("START: manageLogin()");
+		String username = msg.getUsername();
+		String password = msg.getPassword();
+		
+		User user = retrieveUser(username, password);
+		MSGServerAnswerLogin mes = new MSGServerAnswerLogin();
+		if (user == null) {
+			// Reply wrong user
+			mes.code = MSGCode.NOK;
+		}else {
+			// Login user
+			mes.code = MSGCode.OK;
+			mes.setUser(user);
+		}
+		server.sendToTCP(source.getID(), mes);
+		log.debug("END: manageLogin()");
 	}
 	
 	private User retrieveUser(String username, String password) {
@@ -157,6 +186,14 @@ public class SekaiServer implements Runnable, MessageListener<HostedConnection>{
 
 	public void setModel(Model model) {
 		this.model = model;
+	}
+
+	public long getServerStartingTime() {
+		return serverStartingTime;
+	}
+
+	public void setServerStartingTime(long serverStartingTime) {
+		this.serverStartingTime = serverStartingTime;
 	}
 
 }

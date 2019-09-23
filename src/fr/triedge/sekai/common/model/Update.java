@@ -1,13 +1,16 @@
 package fr.triedge.sekai.common.model;
 
+import java.util.ArrayList;
+
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="Update")
 public class Update {
 
 	private String version;
-	private String zipPath;
+	private ArrayList<UpdateElement> elements = new ArrayList<>();
 	
 	public Update() {
 		this("0");
@@ -26,12 +29,13 @@ public class Update {
 		this.version = version;
 	}
 
-	public String getZipPath() {
-		return zipPath;
+	public ArrayList<UpdateElement> getElements() {
+		return elements;
 	}
 
-	@XmlElement(name="ZipPath")
-	public void setZipPath(String zipPath) {
-		this.zipPath = zipPath;
+	@XmlElementWrapper(name="Elements")
+	@XmlElement(name="Element")
+	public void setElements(ArrayList<UpdateElement> elements) {
+		this.elements = elements;
 	}
 }

@@ -2,12 +2,15 @@ package fr.triedge.sekai.client.ui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
 import fr.triedge.sekai.client.controller.LauncherImpl;
@@ -19,10 +22,9 @@ public class Launcher extends JFrame{
 	private LauncherImpl impl;
 	
 	private JLabel labelStatus;
-	private JTextField textUsername;
-	private JPasswordField textPassword;
-	private JButton btnLogin, btnCreateUser;
+	private JButton btnLogin, btnCheckForUpdates;
 	private JPanel mainPanel, gridPanel;
+	private JProgressBar progressBar;
 	
 	public Launcher(LauncherImpl laucnher) {
 		setImpl(laucnher);
@@ -36,22 +38,20 @@ public class Launcher extends JFrame{
 		
 		// Components
 		setMainPanel(new JPanel(new BorderLayout()));
-		setGridPanel(new JPanel(new GridLayout(2,0)));
+		setGridPanel(new JPanel(new GridLayout(3,0)));
 		setLabelStatus(new JLabel("Ready"));
-		setTextUsername(new JTextField());
-		setTextPassword(new JPasswordField());
-		setBtnCreateUser(new JButton("Create Account"));
-		setBtnLogin(new JButton("Login"));
+		setBtnLogin(new JButton("Start"));
+		setBtnCheckForUpdates(new JButton("Check For Updates"));
+		setProgressBar(new JProgressBar(0, 100));
 		
 		getBtnLogin().addActionListener(e -> actionLogin());
-		getBtnCreateUser().addActionListener(e -> actionCreateUser());
+		getBtnCheckForUpdates().addActionListener(e -> actionCheckForUpdates());
+		disableLogin();
 		
-		getGridPanel().add(new JLabel("Username"));
-		getGridPanel().add(getTextUsername());
+		getGridPanel().add(getProgressBar());
+		getGridPanel().add(getBtnCheckForUpdates());
+		getGridPanel().add(getLabelStatus());
 		getGridPanel().add(getBtnLogin());
-		getGridPanel().add(new JLabel("Password"));
-		getGridPanel().add(getTextPassword());
-		getGridPanel().add(getBtnCreateUser());
 		
 		getMainPanel().add(getGridPanel(),BorderLayout.SOUTH);
 		setContentPane(getMainPanel());
@@ -59,16 +59,27 @@ public class Launcher extends JFrame{
 		setVisible(true);
 	}
 	
-	private void actionLogin() {
-		String username = getTextUsername().getText();
-		String password = new String(getTextPassword().getPassword());
-		
-		System.out.println(username+" "+password);
+	private void actionCheckForUpdates() {
+		getImpl().startTaskCheckUpdates();
 	}
 	
-	private void actionCreateUser() {
-		
+	public void disableLogin() {
+		getBtnLogin().setEnabled(false);
 	}
+	
+	public void enableLogin() {
+		getBtnLogin().setEnabled(true);
+	}
+	
+	private void actionLogin() {
+		try {
+			getImpl().startSekaiServer();
+		} catch (MalformedURLException | ClassNotFoundException | NoSuchMethodException | SecurityException
+				| IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	public JLabel getLabelStatus() {
 		return labelStatus;
@@ -86,29 +97,6 @@ public class Launcher extends JFrame{
 		this.btnLogin = btnLogin;
 	}
 
-	public JButton getBtnCreateUser() {
-		return btnCreateUser;
-	}
-
-	public void setBtnCreateUser(JButton btnCreateUser) {
-		this.btnCreateUser = btnCreateUser;
-	}
-
-	public JTextField getTextUsername() {
-		return textUsername;
-	}
-
-	public void setTextUsername(JTextField textUsername) {
-		this.textUsername = textUsername;
-	}
-
-	public JPasswordField getTextPassword() {
-		return textPassword;
-	}
-
-	public void setTextPassword(JPasswordField textPassword) {
-		this.textPassword = textPassword;
-	}
 
 	public JPanel getMainPanel() {
 		return mainPanel;
@@ -132,5 +120,21 @@ public class Launcher extends JFrame{
 
 	public void setImpl(LauncherImpl impl) {
 		this.impl = impl;
+	}
+
+	public JProgressBar getProgressBar() {
+		return progressBar;
+	}
+
+	public void setProgressBar(JProgressBar progressBar) {
+		this.progressBar = progressBar;
+	}
+
+	public JButton getBtnCheckForUpdates() {
+		return btnCheckForUpdates;
+	}
+
+	public void setBtnCheckForUpdates(JButton btnCheckForUpdates) {
+		this.btnCheckForUpdates = btnCheckForUpdates;
 	}
 }

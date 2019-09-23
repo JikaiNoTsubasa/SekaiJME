@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ClientConfig {
 
 	private int serverPort;
-	private String serverHost, linkUpdate;
+	private String serverHost, linkUpdate, version;
 	
 	public int getServerPort() {
 		return serverPort;
@@ -29,6 +29,13 @@ public class ClientConfig {
 	@XmlElement(name="LinkUpdate")
 	public void setLinkUpdate(String linkUpdate) {
 		this.linkUpdate = linkUpdate;
+	}
+	public String getVersion() {
+		return version;
+	}
+	@XmlElement(name="ClientVersion")
+	public void setVersion(String version) {
+		this.version = version;
 	}
 	
 }

@@ -3,11 +3,12 @@
     <users>
         <users>
             <characters>
-                <id>1</id>
+                <id>0</id>
                 <name>Jikai</name>
             </characters>
-            <id>1</id>
-            <username>spyroth</username>
+            <id>8888</id>
+            <password>test</password>
+            <username>test</username>
         </users>
     </users>
 </model>

@@ -4,7 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 
+import javax.swing.SwingWorker;
 import javax.xml.bind.JAXBException;
 
 import org.apache.logging.log4j.LogManager;
@@ -15,6 +21,8 @@ import org.apache.logging.log4j.core.config.Configurator;
 import fr.triedge.sekai.client.config.ClientConfig;
 import fr.triedge.sekai.client.ui.Launcher;
 import fr.triedge.sekai.client.ui.UI;
+import fr.triedge.sekai.common.model.Update;
+import fr.triedge.sekai.common.model.UpdateElement;
 import fr.triedge.sekai.common.utils.Utils;
 import fr.triedge.sekai.common.utils.XmlHelper;
 
@@ -53,15 +61,36 @@ public class LauncherImpl {
 		// Start UI
 		startLauncherUI();
 		
-		// Start update
+	}
+	public void saveConfig() {
 		try {
-			updateStatus("Downloading MANIFEST...");
-			checkForUpdates();
-			updateStatus("Extracting MANIFEST...");
-		} catch (IOException e) {
-			log.error("Cannot check for updates",e);
-			UI.error("Cannot check for updates",e);
+			XmlHelper.storeXml(config, new File(CONFIG_FILE));
+		} catch (JAXBException e) {
+			UI.error("Cannot save config file", e);
+			log.error("Cannot save config file",e);
 		}
+	}
+	
+	public void startTaskCheckUpdates() {
+		log.debug("START: startTaskCheckUpdates()");
+		SwingWorker<Void, Integer> worker = new SwingWorker<Void, Integer>() 
+		{
+			@Override
+			protected Void doInBackground() throws Exception {
+				try {
+					updateStatus("Downloading MANIFEST...");
+					log.info("Checking for updates...");
+					checkForUpdates();
+					log.info("Updates done");
+				} catch (IOException e) {
+					UI.error("Cannot check for updates",e);
+					log.error("Cannot check for updates",e);
+				}
+				return null;
+			}
+		};
+		worker.execute();
+		log.debug("END: startTaskCheckUpdates()");
 	}
 	
 	public void updateStatus(String status) {
@@ -76,15 +105,67 @@ public class LauncherImpl {
 	}
 	
 	private void startLauncherUI() {
+		log.debug("START: startLauncherUI()");
+		log.info("Starting GUI...");
 		setLauncherUI(new Launcher(this));
 		getLauncherUI().build();
+		log.info("GUI started");
+		log.debug("END: startLauncherUI()");
 	}
 
 	private void checkForUpdates() throws IOException {
+		log.debug("START: checkForUpdates()");
+		getLauncherUI().getBtnCheckForUpdates().setEnabled(false);
 		String url = config.getLinkUpdate();
 		Utils.downloadFileTo(url, TMP_UPDATE_FILE);
-		
-		
+		updateStatus("Extracting MANIFEST...");
+		getLauncherUI().getProgressBar().setValue(10);
+		log.info("Downloaded update.xml");
+		String currentDir = System.getProperty("user.dir");
+		try {
+			Update update = XmlHelper.loadXml(Update.class, new File(TMP_UPDATE_FILE));
+			if (!update.getVersion().equals(config.getVersion())) {
+				updateStatus("Downloading new version...");
+				log.info("Current version ("+config.getVersion()+") is different than actual version ("+update.getVersion()+")");
+				int count = update.getElements().size();
+				int step = (int)(90/count);
+				for (UpdateElement ue: update.getElements()) {
+					String from = ue.getSitePath();
+					String to = currentDir+File.separator+ue.getLocalPath();
+					log.info("Downloading file from: "+from+", to: "+to+"...");
+					updateStatus("Downloading "+to+"...");
+					Utils.downloadFileTo(from, to);
+					getLauncherUI().getProgressBar().setValue(getLauncherUI().getProgressBar().getValue()+step);
+				}
+				getLauncherUI().getBtnCheckForUpdates().setEnabled(false);
+				getLauncherUI().enableLogin();
+				getLauncherUI().getProgressBar().setValue(100);
+				updateStatus("Version up to date");
+				config.setVersion(update.getVersion());
+				saveConfig();
+			}else {
+				getLauncherUI().getBtnCheckForUpdates().setEnabled(false);
+				getLauncherUI().enableLogin();
+				getLauncherUI().getProgressBar().setValue(100);
+				updateStatus("Version up to date");
+			}
+		} catch (Exception e) {
+			UI.error("Exception occured", e);
+			log.error("Exception occured",e);
+		}
+		log.debug("END: checkForUpdates()");
+	}
+	
+	public void startSekaiServer() throws MalformedURLException, ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		File file = new File("SekaiServer.jar");
+		URL[] urls = { file.toURI().toURL() };
+		log.debug("URL: "+urls[0]);
+		URLClassLoader loader = new URLClassLoader(urls);
+		Class<?> cls = loader.loadClass("fr.triedge.sekai.client.controller.SekaiClient");
+		Method main = cls.getDeclaredMethod("main", String[].class); // get the main method using reflection
+		String[] args = {"whatever"};
+		main.invoke(null, new Object[] {args}); // static methods are invoked with null as first argument
+		getLauncherUI().dispose();
 	}
 	
 	private void loadClientConfig() throws JAXBException {

@@ -44,6 +44,13 @@ public class UI {
 		return null;
 	}
 	
+	public static void warn(String content) {
+		JOptionPane.showMessageDialog(null,
+			    content,
+			    "WARNING",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
 	public static void error(String content, Exception e) {
 		ExceptionDialog ld = new ExceptionDialog(
 				"Unexpected Error!",

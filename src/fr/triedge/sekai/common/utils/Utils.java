@@ -11,6 +11,14 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
+import com.esotericsoftware.kryo.Kryo;
+
+import fr.triedge.sekai.common.model.Map;
+import fr.triedge.sekai.common.model.User;
+import fr.triedge.sekai.common.net.MSGClientAskLoginServer;
+import fr.triedge.sekai.common.net.MSGCode;
+import fr.triedge.sekai.common.net.MSGServerAnswerLogin;
+
 public class Utils {
 
 	public static byte[] imageToBytes(BufferedImage img) throws IOException {
@@ -29,7 +37,10 @@ public class Utils {
 
 	public static void downloadFileTo(String source, String target) throws IOException {
 		BufferedInputStream inputStream = new BufferedInputStream(new URL(source).openStream());
-		FileOutputStream fileOS = new FileOutputStream(target);
+		File file = new File(target);
+		file.getParentFile().mkdirs();
+		file.createNewFile();
+		FileOutputStream fileOS = new FileOutputStream(file,false);
 				byte data[] = new byte[1024];
 		int byteContent;
 		while ((byteContent = inputStream.read(data, 0, 1024)) != -1) {
@@ -41,9 +52,28 @@ public class Utils {
 	public static void generateUpdateXmlFile(String resourcePath, String xmlPath) {
 		File root = new File(resourcePath);
 		File[] files = root.listFiles();
+		// FIXME - Create process to generate update file
 	}
 	
 	public static void generateZipFile(String resourcePath, String targetPath) {
 		
 	}
+
+	public static void registerClasses(Kryo kryo) {
+		kryo.register(MSGClientAskLoginServer.class);
+		kryo.register(MSGServerAnswerLogin.class);
+		kryo.register(MSGCode.class);
+		kryo.register(User.class);
+		kryo.register(Character.class);
+		kryo.register(Map.class);
+	}
+	
+	public static int roundDown(double x) {
+		return (int)(x-(x%1));
+	}
+	
+	public static int roundDown(long x) {
+		return (int)(x-(x%1));
+	}
+
 }

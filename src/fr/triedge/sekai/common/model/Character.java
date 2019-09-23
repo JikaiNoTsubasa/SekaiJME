@@ -10,6 +10,7 @@ public class Character {
 
 	private int id;
 	private String name;
+	private String currentMap;
 
 	public String getName() {
 		return name;
@@ -28,4 +29,13 @@ public class Character {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public String getCurrentMap() {
+		return currentMap;
+	}
+
+	public void setCurrentMap(String currentMap) {
+		this.currentMap = currentMap;
+	}
+
 }
