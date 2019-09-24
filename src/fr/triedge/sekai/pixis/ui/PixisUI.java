@@ -1,6 +1,8 @@
 package fr.triedge.sekai.pixis.ui;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -10,6 +12,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -19,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import fr.triedge.sekai.client.ui.UI;
+import fr.triedge.sekai.common.utils.Utils;
 import fr.triedge.sekai.pixis.model.EditableMap;
 import fr.triedge.sekai.pixis.model.Palette;
 import fr.triedge.sekai.pixis.model.Project;
@@ -107,24 +112,44 @@ public class PixisUI {
 	public static EditableMap showNewMap() {
 		EditableMap map = null;
 		JTextField textName = new JTextField("map1");
+		JButton btnSelectChipset = new JButton("??????");
 		JTextField numCharacterHeight = new JTextField("50");
 		JTextField numCharacterWidth = new JTextField("50");
 
 		JPanel panel = new JPanel(new GridLayout(0, 2));
 		panel.add(new JLabel("Map Name:"));
 		panel.add(textName);
+		panel.add(new JLabel("Chipset"));
+		panel.add(btnSelectChipset);
 		panel.add(new JLabel("Map Height(blocs):"));
 		panel.add(numCharacterHeight);
 		panel.add(new JLabel("Map Width(blocs):"));
 		panel.add(numCharacterWidth);
+		
+		btnSelectChipset.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				File file = showChipsetChooser();
+				if (file != null) {
+					btnSelectChipset.setText(file.getName());
+					try {
+						btnSelectChipset.setToolTipText(Utils.imageToString(ImageIO.read(file)));
+					} catch (IOException e1) {
+						UI.error("Cannot load chipset", e1);
+					}
+				}
+			}
+		});
 
 		int result = JOptionPane.showConfirmDialog(null, panel, "New Map",
 				JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		if (result == JOptionPane.OK_OPTION) {
 			map = new EditableMap();
-			//map.setName(textName.getText().replace(" ", "_")+Const.EXT_MAP);
-			//map.setHeight(Integer.valueOf(numCharacterHeight.getText()));
-			//map.setWidth(Integer.valueOf(numCharacterWidth.getText()));
+			map.setMapName(textName.getText().replace(" ", "_")+Const.EXT_MAP);
+			map.setMapHeight(Integer.valueOf(numCharacterHeight.getText()));
+			map.setMapWidth(Integer.valueOf(numCharacterWidth.getText()));
+			map.setChipset(btnSelectChipset.getToolTipText());
 		}
 		return map;
 	}
@@ -158,7 +183,7 @@ public class PixisUI {
 		return null;
 	}
 	
-	public static File showImageChooser() {
+	public static File showChipsetChooser() {
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter prjFilter = new FileNameExtensionFilter("Chipset", "png");
 		chooser.setFileFilter(prjFilter);

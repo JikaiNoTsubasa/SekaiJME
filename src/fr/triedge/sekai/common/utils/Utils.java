@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Base64;
 
 import javax.imageio.ImageIO;
 
@@ -21,6 +22,7 @@ import fr.triedge.sekai.common.net.MSGServerAnswerLogin;
 
 public class Utils {
 
+	@Deprecated
 	public static byte[] imageToBytes(BufferedImage img) throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ImageIO.write( img, "png", baos );
@@ -30,6 +32,19 @@ public class Utils {
 		return imageInByte;
 	}
 
+	public static String imageToString(BufferedImage img) throws IOException {
+		final ByteArrayOutputStream os = new ByteArrayOutputStream();
+		ImageIO.write(img, "png", os);
+		return Base64.getEncoder().encodeToString(os.toByteArray());
+	}
+	
+	public static BufferedImage stringToImage(String text) throws IOException {
+		byte[] imageData = Base64.getDecoder().decode(text);
+		ByteArrayInputStream bais = new ByteArrayInputStream(imageData);
+		return ImageIO.read(bais);
+	}
+
+	@Deprecated
 	public static BufferedImage bytesToImage(byte[] imageData) throws IOException {
 		ByteArrayInputStream bais = new ByteArrayInputStream(imageData);
 		return ImageIO.read(bais);
@@ -41,22 +56,22 @@ public class Utils {
 		file.getParentFile().mkdirs();
 		file.createNewFile();
 		FileOutputStream fileOS = new FileOutputStream(file,false);
-				byte data[] = new byte[1024];
+		byte data[] = new byte[1024];
 		int byteContent;
 		while ((byteContent = inputStream.read(data, 0, 1024)) != -1) {
 			fileOS.write(data, 0, byteContent);
 		}
 		fileOS.close();
 	}
-	
+
 	public static void generateUpdateXmlFile(String resourcePath, String xmlPath) {
 		File root = new File(resourcePath);
 		File[] files = root.listFiles();
 		// FIXME - Create process to generate update file
 	}
-	
+
 	public static void generateZipFile(String resourcePath, String targetPath) {
-		
+
 	}
 
 	public static void registerClasses(Kryo kryo) {
@@ -67,11 +82,11 @@ public class Utils {
 		kryo.register(Character.class);
 		kryo.register(Map.class);
 	}
-	
+
 	public static int roundDown(double x) {
 		return (int)(x-(x%1));
 	}
-	
+
 	public static int roundDown(long x) {
 		return (int)(x-(x%1));
 	}

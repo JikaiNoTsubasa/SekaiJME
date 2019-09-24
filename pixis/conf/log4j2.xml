@@ -6,8 +6,8 @@
 				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
 		</Console>
 		<RollingFile name="RollingFile"
-			fileName="logs/application.log"
-			filePattern="logs/application.%i.log.zip"
+			fileName="logs/pixis.log"
+			filePattern="logs/pixis.%i.log.zip"
 			ignoreExceptions="false">
 			<PatternLayout pattern ="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
 			<Policies>
@@ -16,8 +16,8 @@
 			<DefaultRolloverStrategy max="5" />
 		</RollingFile>
 		<RollingFile name="RootRollingFile"
-			fileName="logs/root.log"
-			filePattern="logs/root.%i.log.zip"
+			fileName="logs/root_pixis.log"
+			filePattern="logs/root_pixis.%i.log.zip"
 			ignoreExceptions="false">
 			<PatternLayout pattern ="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
 			<Policies>
@@ -30,7 +30,7 @@
 		<Root level="ERROR">
 			<AppenderRef ref="RootRollingFile" />
 		</Root>
-		<logger name="fr.triedge.pixis" level="DEBUG">
+		<logger name="fr.triedge.sekai.pixis" level="DEBUG">
 			<AppenderRef ref="Console" />
 			<AppenderRef ref="RollingFile" />
 		</logger>

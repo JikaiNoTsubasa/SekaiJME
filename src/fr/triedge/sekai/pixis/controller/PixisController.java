@@ -16,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.ConfigurationSource;
 import org.apache.logging.log4j.core.config.Configurator;
 
+import fr.triedge.sekai.client.ui.UI;
 import fr.triedge.sekai.pixis.model.EditableMap;
 import fr.triedge.sekai.pixis.model.Palette;
 import fr.triedge.sekai.pixis.model.Project;
@@ -31,6 +32,7 @@ import fr.triedge.sekai.pixis.utils.Const;
 import fr.triedge.sekai.pixis.utils.Icons;
 import fr.triedge.sekai.pixis.utils.Storage;
 
+// https://github.com/qxo/eclipse-metrics-plugin
 public class PixisController {
 
 	
@@ -95,6 +97,7 @@ public class PixisController {
 				});
 				log.debug("Project created: "+ prj.getName());
 			} catch (JAXBException e) {
+				UI.error("Cannot save project "+prj.getName(), e);
 				log.error("Cannot save project "+prj.getName(),e);
 			}
 		}else {
@@ -121,6 +124,7 @@ public class PixisController {
 					}
 				});
 			} catch (JAXBException e) {
+				UI.error("Cannot load project", e);
 				log.error("Cannot load project",e);
 			}
 		}

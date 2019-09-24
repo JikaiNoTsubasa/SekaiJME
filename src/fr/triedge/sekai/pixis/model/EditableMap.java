@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name="EditableMap")
 public class EditableMap {
 
 	
@@ -13,6 +15,7 @@ public class EditableMap {
 	private String mapName;
 	private String mapImage;
 	private String chipset;
+	private int mapHeight, mapWidth;
 	
 	public String getMapName() {
 		return mapName;
@@ -41,7 +44,7 @@ public class EditableMap {
 		return goundTiles;
 	}
 
-	@XmlElementWrapper(name="GroundTiles")
+	@XmlElementWrapper(name="GroundTileList")
 	@XmlElement(name="GroundTile")
 	public void setGoundTiles(ArrayList<Tile> goundTiles) {
 		this.goundTiles = goundTiles;
@@ -51,9 +54,23 @@ public class EditableMap {
 		return objectTiles;
 	}
 
-	@XmlElementWrapper(name="ObjectTiles")
+	@XmlElementWrapper(name="ObjectTileList")
 	@XmlElement(name="ObjectTile")
 	public void setObjectTiles(ArrayList<Tile> objectTiles) {
 		this.objectTiles = objectTiles;
+	}
+	public int getMapHeight() {
+		return mapHeight;
+	}
+	@XmlElement(name="MapHeight")
+	public void setMapHeight(int mapHeight) {
+		this.mapHeight = mapHeight;
+	}
+	public int getMapWidth() {
+		return mapWidth;
+	}
+	@XmlElement(name="MapWidth")
+	public void setMapWidth(int mapWidth) {
+		this.mapWidth = mapWidth;
 	}
 }
