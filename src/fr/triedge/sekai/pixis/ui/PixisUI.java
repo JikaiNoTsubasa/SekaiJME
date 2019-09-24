@@ -23,6 +23,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import fr.triedge.sekai.client.ui.UI;
+import fr.triedge.sekai.common.utils.DefaultFactory;
 import fr.triedge.sekai.common.utils.Utils;
 import fr.triedge.sekai.pixis.model.EditableMap;
 import fr.triedge.sekai.pixis.model.Palette;
@@ -145,11 +146,11 @@ public class PixisUI {
 		int result = JOptionPane.showConfirmDialog(null, panel, "New Map",
 				JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		if (result == JOptionPane.OK_OPTION) {
-			map = new EditableMap();
-			map.setMapName(textName.getText().replace(" ", "_")+Const.EXT_MAP);
-			map.setMapHeight(Integer.valueOf(numCharacterHeight.getText()));
-			map.setMapWidth(Integer.valueOf(numCharacterWidth.getText()));
-			map.setChipset(btnSelectChipset.getToolTipText());
+			map = DefaultFactory.generateDefaultEditableMap(
+					textName.getText().replace(" ", "_")+Const.EXT_MAP, 
+					Integer.valueOf(numCharacterHeight.getText()), 
+					Integer.valueOf(numCharacterWidth.getText()), 
+					btnSelectChipset.getToolTipText());
 		}
 		return map;
 	}

@@ -8,6 +8,7 @@ public class Tile {
 
 	private int x,y;
 	private TileType type;
+	private int chipsetX, chipsetY;
 	
 	public Tile() {
 	}
@@ -42,6 +43,24 @@ public class Tile {
 	@XmlAttribute(name="y")
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	public int getChipsetY() {
+		return chipsetY;
+	}
+
+	@XmlAttribute(name="chipY")
+	public void setChipsetY(int chipsetY) {
+		this.chipsetY = chipsetY;
+	}
+
+	public int getChipsetX() {
+		return chipsetX;
+	}
+
+	@XmlAttribute(name="chipX")
+	public void setChipsetX(int chipsetX) {
+		this.chipsetX = chipsetX;
 	}
 	
 }

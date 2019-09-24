@@ -1,6 +1,7 @@
 package fr.triedge.sekai.pixis.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Graphics;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,6 +16,8 @@ import fr.triedge.sekai.common.utils.Utils;
 import fr.triedge.sekai.pixis.controller.PixisController;
 import fr.triedge.sekai.pixis.model.EditableMap;
 import fr.triedge.sekai.pixis.model.Project;
+import fr.triedge.sekai.pixis.model.Tile;
+import fr.triedge.sekai.pixis.model.TileType;
 
 public class MapEditor extends JPanel{
 
@@ -23,6 +26,7 @@ public class MapEditor extends JPanel{
 	private Project project;
 	private EditableMap editableMap;
 	private PixisController controller;
+	private MapDisplayer mapDisplayer;
 	
 	private JButton btnSelectChipset;
 	private JToolBar toolbar;
@@ -38,6 +42,7 @@ public class MapEditor extends JPanel{
 		setLayout(new BorderLayout());
 		setToolbar(new JToolBar());
 		setBtnSelectChipset(new JButton("Chipset"));
+		setMapDisplayer(new MapDisplayer());
 		
 		getToolbar().setFloatable(false);
 		getToolbar().add(getBtnSelectChipset());
@@ -45,10 +50,17 @@ public class MapEditor extends JPanel{
 		getBtnSelectChipset().addActionListener(e -> actionSelectChipset());
 		
 		add(getToolbar(), BorderLayout.NORTH);
+		add(getMapDisplayer(), BorderLayout.CENTER);
 	}
 	
 	private class MapDisplayer extends JPanel{
 		
+		private static final long serialVersionUID = -2823063788900209076L;
+
+		@Override
+		protected void paintComponent(Graphics g) {
+			
+		}
 	}
 	
 	public void actionSelectChipset() {
@@ -102,6 +114,14 @@ public class MapEditor extends JPanel{
 
 	public void setToolbar(JToolBar toolbar) {
 		this.toolbar = toolbar;
+	}
+
+	public MapDisplayer getMapDisplayer() {
+		return mapDisplayer;
+	}
+
+	public void setMapDisplayer(MapDisplayer mapDisplayer) {
+		this.mapDisplayer = mapDisplayer;
 	}
 
 }
