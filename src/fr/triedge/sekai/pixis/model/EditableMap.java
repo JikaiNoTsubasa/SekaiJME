@@ -15,7 +15,7 @@ public class EditableMap {
 	private String mapName;
 	private String mapImage;
 	private String chipset;
-	private int mapHeight, mapWidth;
+	private int mapHeight, mapWidth, tileSize;
 	
 	public String getMapName() {
 		return mapName;
@@ -72,5 +72,12 @@ public class EditableMap {
 	@XmlElement(name="MapWidth")
 	public void setMapWidth(int mapWidth) {
 		this.mapWidth = mapWidth;
+	}
+	public int getTileSize() {
+		return tileSize;
+	}
+	@XmlElement(name="TileSize")
+	public void setTileSize(int tileSize) {
+		this.tileSize = tileSize;
 	}
 }

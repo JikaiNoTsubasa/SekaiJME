@@ -29,6 +29,10 @@ public class XmlHelper {
 		jaxbMarshaller.marshal(element, file);
 	}
 	
+	public static <T> void storeXml(T element, String path) throws JAXBException {
+		storeXml(element,new File(path));
+	}
+	
 	/**
 	 * Generic method to load xml and transform it into an object which was declared with annotations
 	 * @param clazz - The class of the object in which we want the xml to be casted
@@ -41,5 +45,9 @@ public class XmlHelper {
 		JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		return (T) jaxbUnmarshaller.unmarshal(file);
+	}
+	
+	public static <T> T loadXml(Class<?> clazz, String path) throws JAXBException {
+		return loadXml(clazz,new File(path));
 	}
 }

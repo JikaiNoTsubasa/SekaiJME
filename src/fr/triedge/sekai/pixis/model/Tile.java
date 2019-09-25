@@ -62,5 +62,22 @@ public class Tile {
 	public void setChipsetX(int chipsetX) {
 		this.chipsetX = chipsetX;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Tile [x=").append(x).append(", y=").append(y).append(", type=").append(type)
+				.append(", chipsetX=").append(chipsetX).append(", chipsetY=").append(chipsetY).append("]");
+		return builder.toString();
+	}
 	
+	public Tile copy() {
+		Tile tile = new Tile();
+		tile.setX(this.x);
+		tile.setY(this.y);
+		tile.setChipsetX(this.chipsetX);
+		tile.setChipsetY(this.chipsetY);
+		tile.setType(this.type);
+		return tile;
+	}
 }

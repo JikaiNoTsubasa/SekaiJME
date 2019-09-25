@@ -4,12 +4,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -24,6 +20,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import fr.triedge.sekai.client.ui.UI;
 import fr.triedge.sekai.common.utils.DefaultFactory;
+import fr.triedge.sekai.common.utils.ExceptionDialog;
 import fr.triedge.sekai.common.utils.Utils;
 import fr.triedge.sekai.pixis.model.EditableMap;
 import fr.triedge.sekai.pixis.model.Palette;
@@ -32,11 +29,6 @@ import fr.triedge.sekai.pixis.model.Sprite;
 import fr.triedge.sekai.pixis.model.SpriteLayer;
 import fr.triedge.sekai.pixis.model.SpriteSheet;
 import fr.triedge.sekai.pixis.utils.Const;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 
 public class PixisUI {
 
@@ -101,7 +93,7 @@ public class PixisUI {
 			sp.setPosXonSheet(0);
 			sp.setPosYonSheet(0);
 			try {
-				sp.setImageData(PixisUI.imageToBytes(img));
+				sp.setImageData(Utils.imageToString(img));
 			} catch (IOException e) {
 				error("Cannot convert default image to bytes", e);
 				return null;
@@ -116,6 +108,7 @@ public class PixisUI {
 		JButton btnSelectChipset = new JButton("??????");
 		JTextField numCharacterHeight = new JTextField("50");
 		JTextField numCharacterWidth = new JTextField("50");
+		JTextField numTileSize = new JTextField("16");
 
 		JPanel panel = new JPanel(new GridLayout(0, 2));
 		panel.add(new JLabel("Map Name:"));
@@ -126,6 +119,8 @@ public class PixisUI {
 		panel.add(numCharacterHeight);
 		panel.add(new JLabel("Map Width(blocs):"));
 		panel.add(numCharacterWidth);
+		panel.add(new JLabel("Tile Size(px):"));
+		panel.add(numTileSize);
 		
 		btnSelectChipset.addActionListener(new ActionListener() {
 			
@@ -151,6 +146,7 @@ public class PixisUI {
 					Integer.valueOf(numCharacterHeight.getText()), 
 					Integer.valueOf(numCharacterWidth.getText()), 
 					btnSelectChipset.getToolTipText());
+			map.setTileSize(Integer.valueOf(numTileSize.getText()));
 		}
 		return map;
 	}
@@ -305,6 +301,21 @@ public class PixisUI {
 			    JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	public static void warn(String content) {
+		JOptionPane.showMessageDialog(null,
+			    content,
+			    "WARNING",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public static void error(String content, Exception e) {
+		ExceptionDialog ld = new ExceptionDialog(
+				"Unexpected Error!",
+				content, e);
+
+		ld.setVisible(true);
+	}
+	/*
 	public static void error(String content, Exception e) {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("ERROR");
@@ -336,18 +347,5 @@ public class PixisUI {
 
 		alert.showAndWait();
 	}
-	
-	public static byte[] imageToBytes(BufferedImage img) throws IOException {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write( img, "png", baos );
-		baos.flush();
-		byte[] imageInByte = baos.toByteArray();
-		baos.close();
-		return imageInByte;
-	}
-	
-	public static BufferedImage bytesToImage(byte[] imageData) throws IOException {
-		ByteArrayInputStream bais = new ByteArrayInputStream(imageData);
-		return ImageIO.read(bais);
-	}
+	*/
 }

@@ -7,9 +7,22 @@ import java.io.IOException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
-// https://www.baeldung.com/java-compress-and-uncompress
+/**
+ * Utility class to provide some handy method about zip management
+ * Credit goes to: https://www.baeldung.com/java-compress-and-uncompress
+ * 
+ * @author sbi
+ *
+ */
 public class ZipHelper {
 	
+	/**
+	 * Zips a folder. The folder will be contained inside the zip.
+	 * 
+	 * @param sourceFile - The path to the source folder to zip
+	 * @param target - The name and path to the target zipped file. e.g: path_to_file/myZip.zip
+	 * @throws IOException - If the zipping failed
+	 */
 	public static void zipFolder(String sourceFile, String target) throws IOException {
         FileOutputStream fos = new FileOutputStream(target);
         ZipOutputStream zipOut = new ZipOutputStream(fos);
@@ -20,6 +33,14 @@ public class ZipHelper {
         fos.close();
     }
  
+	/**
+	 * Internal zip method to zip a specific file into the folder
+	 * 
+	 * @param fileToZip - The file to zip
+	 * @param fileName - The name of the file
+	 * @param zipOut - The outputstream of the current zipping process
+	 * @throws IOException - If the zipping failed
+	 */
     private static void zipFile(File fileToZip, String fileName, ZipOutputStream zipOut) throws IOException {
         if (fileToZip.isHidden()) {
             return;
@@ -49,9 +70,14 @@ public class ZipHelper {
         fis.close();
     }
     
+    /**
+     * Unzips a zip file
+     * 
+     * @param fileZip - The zip file to unzip
+     * @param destDir - The path to where the zip file will be unzipped
+     * @throws IOException - If the zipping failed
+     */
     public static void unzipFolder(String fileZip, String destDir) throws IOException {
-    	//String fileZip = "src/main/resources/unzipTest/compressed.zip";
-        //File destDir = new File("src/main/resources/unzipTest");
         byte[] buffer = new byte[1024];
         ZipInputStream zis = new ZipInputStream(new FileInputStream(fileZip));
         ZipEntry zipEntry = zis.getNextEntry();
@@ -69,6 +95,14 @@ public class ZipHelper {
         zis.close();
     }
     
+    /**
+     * Internal unzip method used to unzip a specific file
+     * 
+     * @param destinationDir
+     * @param zipEntry
+     * @return
+     * @throws IOException
+     */
     private static File newFile(File destinationDir, ZipEntry zipEntry) throws IOException {
         File destFile = new File(destinationDir, zipEntry.getName());
          
@@ -81,74 +115,4 @@ public class ZipHelper {
          
         return destFile;
     }
-
-	/*
-	public static void zipIt(String source, String target) {
-		byte[] buffer = new byte[1024];
-		FileOutputStream fos = null;
-		ZipOutputStream zos = null;
-		try {
-			fos = new FileOutputStream(target);
-			zos = new ZipOutputStream(fos);
-
-			System.out.println("Output to Zip : " + target);
-			FileInputStream in = null;
-			
-			ArrayList<String> fileList = new ArrayList<>();
-			generateFileList(fileList,source, new File(source));
-			System.out.println("File list size: "+fileList.size());
-
-			for (String file: fileList) {
-				System.out.println("File Added : " + file);
-				ZipEntry ze = new ZipEntry(source + File.separator + file);
-				zos.putNextEntry(ze);
-				try {
-					in = new FileInputStream(target + File.separator + file);
-					int len;
-					while ((len = in .read(buffer)) > 0) {
-						zos.write(buffer, 0, len);
-					}
-				} finally {
-					in.close();
-				}
-			}
-
-			zos.closeEntry();
-			System.out.println("Folder successfully compressed");
-
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} finally {
-			try {
-				zos.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public static void generateFileList(ArrayList<String> fileList, String source, File node) {
-		// add file only
-		if (node.isFile()) {
-			fileList.add(generateZipEntry(source, node.toString()));
-			System.out.println("Added to file list");
-		}
-
-		if (node.isDirectory()) {
-			String[] subNote = node.list();
-			for (String filename: subNote) {
-				generateFileList(fileList, source, new File(node, filename));
-			}
-		}else if (node.isFile()) {
-			fileList.add(generateZipEntry(source, node.toString()));
-		}
-	}
-	
-	public static String generateZipEntry(String target ,String file) {
-		String tmp = file.substring(target.length() + 1, file.length());
-		System.out.println("TMP: ["+target+"]["+file+"] "+tmp);
-        return tmp;
-    }
-    */
-
 }

@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Sprite {
 
 	private int posXonSheet,posYonSheet;
-	private byte[] imageData;
+	private String imageData;
 
 	public int getPosXonSheet() {
 		return posXonSheet;
@@ -28,12 +28,12 @@ public class Sprite {
 		this.posYonSheet = posYonSheet;
 	}
 
-	public byte[] getImageData() {
+	public String getImageData() {
 		return imageData;
 	}
 
 	@XmlElement(name="ImageData")
-	public void setImageData(byte[] imageData) {
+	public void setImageData(String imageData) {
 		this.imageData = imageData;
 	}
 }

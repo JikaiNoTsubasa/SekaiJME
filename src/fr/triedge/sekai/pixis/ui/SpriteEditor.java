@@ -111,7 +111,7 @@ public class SpriteEditor extends JPanel implements MouseWheelListener{
 		addMouseWheelListener(this);
 		setCurrentSprite(getSpriteSheet().getLayers().get(0).getSprites().get(0));
 		try {
-			img = PixisUI.bytesToImage(getCurrentSprite().getImageData());
+			img = Utils.stringToImage(getCurrentSprite().getImageData());
 		} catch (IOException e) {
 			PixisUI.error("Cannot load image from bytes", e);
 		}
@@ -297,7 +297,7 @@ public class SpriteEditor extends JPanel implements MouseWheelListener{
 
 	private void saveProject() {
 		try {
-			getCurrentSprite().setImageData(PixisUI.imageToBytes(img));
+			getCurrentSprite().setImageData(Utils.imageToString(img));
 			getProject().save();
 			updateStatusDisplay("Project saved");
 		} catch (JAXBException e) {

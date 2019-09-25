@@ -331,3 +331,308 @@ Caused by: org.xml.sax.SAXParseException: An invalid XML character (Unicode: 0x1
 2019-09-24 14:50:20 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
 2019-09-24 14:50:31 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
 2019-09-24 14:50:31 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 14:58:51 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 14:58:51 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 14:58:51 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 14:58:55 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 14:58:57 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 14:59:04 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 14:59:04 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:01:00 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:01:00 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:01:00 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:01:02 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:01:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:01:20 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:01:20 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:01:23 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:01:23 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:01:23 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:01:25 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: New Project
+2019-09-25 15:01:28 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Project created: Sekai.prj
+2019-09-25 15:01:28 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: New Project
+2019-09-25 15:01:31 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: New Node of type: MAP
+2019-09-25 15:01:40 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: New Node of type: MAP
+2019-09-25 15:02:15 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:02:15 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:02:31 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:02:31 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:02:31 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:02:33 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:02:35 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:02:57 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:02:57 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:03:40 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:03:40 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:03:40 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:03:42 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:03:44 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:04:02 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:04:02 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:21:21 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:21:21 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:21:21 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:21:24 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:21:26 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:23:48 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:23:48 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:25:33 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:25:33 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:25:33 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:25:35 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:25:37 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:26:22 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:26:22 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:26:26 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:26:26 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:26:26 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:26:28 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:26:29 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:27:00 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: New Node of type: MAP
+2019-09-25 15:27:11 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: New Node of type: MAP
+2019-09-25 15:29:12 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:29:12 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:29:16 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:29:16 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:29:17 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:29:18 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:29:20 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:29:41 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:29:41 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:37:39 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:37:39 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:37:39 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:37:41 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:37:43 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:38:04 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:38:04 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:39:13 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:39:13 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:39:13 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:39:15 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:39:16 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:39:49 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:39:49 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:41:07 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:41:07 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:41:07 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:41:08 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:41:10 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:42:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:42:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:42:10 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:42:10 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:42:10 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:42:11 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:42:13 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:43:01 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:43:01 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:43:04 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:43:04 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:43:05 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:43:06 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:43:08 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:44:13 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:44:13 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:44:16 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:44:16 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:44:16 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:44:18 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:44:19 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:44:25 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:44:25 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:46:27 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:46:27 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:46:27 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:46:29 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:46:30 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:47:28 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:47:28 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:55:54 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:55:54 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:55:54 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 15:55:55 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 15:55:57 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 15:56:46 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: New Node of type: PALETTE
+2019-09-25 15:56:48 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: New Node of type: PALETTE
+2019-09-25 15:57:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: New Node of type: SPRITE
+2019-09-25 15:57:13 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: New Node of type: SPRITE
+2019-09-25 15:59:06 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 15:59:06 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 15:59:10 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 15:59:10 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 15:59:10 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:00:30 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:00:32 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 16:02:10 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 16:02:10 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 16:09:51 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:09:51 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:09:51 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:10:11 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 16:10:11 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 16:10:14 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:10:14 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:10:15 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:10:18 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:10:20 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 16:11:05 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:11:05 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:11:05 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:11:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:11:08 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 16:12:02 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:12:02 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:12:02 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:12:04 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:12:06 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 16:12:22 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 16:12:22 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 16:14:49 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 16:14:49 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 16:20:51 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:20:51 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:20:51 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:20:53 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:20:55 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 16:26:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 16:26:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 16:38:18 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:38:18 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:38:18 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:38:20 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:38:22 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 16:40:50 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 16:40:50 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 16:40:53 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:40:53 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:40:53 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:40:55 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:40:56 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 16:44:30 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:44:30 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:44:30 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:44:32 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:44:33 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 16:44:59 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 16:44:59 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 16:45:00 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 16:45:00 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 16:45:03 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:45:03 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:45:04 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:45:05 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:45:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 16:45:24 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 16:45:24 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 16:57:03 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:57:03 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:57:03 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:57:05 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:57:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 16:57:45 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 16:57:45 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 16:57:48 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:57:48 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:57:48 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:57:49 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:57:51 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 16:59:51 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 16:59:51 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 16:59:54 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 16:59:54 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 16:59:55 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 16:59:56 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 16:59:58 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:04:49 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:04:49 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:04:52 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:04:52 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:04:52 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:04:54 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:04:55 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:06:02 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:06:02 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:06:05 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:06:05 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:06:06 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:06:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:06:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:07:54 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:07:54 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:07:54 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:07:55 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:07:57 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:09:04 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:09:04 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:09:07 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:09:07 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:09:07 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:09:09 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:09:10 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:12:57 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:12:57 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:14:27 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:14:27 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:14:27 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:14:29 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:14:33 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:15:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:15:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:19:29 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:19:29 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:19:30 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:19:33 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:19:35 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:20:37 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:20:37 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:20:40 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:20:40 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:20:40 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:20:42 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:20:43 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:24:05 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:24:05 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:24:45 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:24:45 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:24:45 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:24:47 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:24:48 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:26:02 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:26:02 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:26:14 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:26:14 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:26:14 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:26:15 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:26:18 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:26:53 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: New Node of type: MAP
+2019-09-25 17:27:01 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: New Node of type: MAP
+2019-09-25 17:27:52 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:27:52 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:29:30 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:29:30 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:29:30 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:29:32 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:29:33 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:31:46 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:31:46 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:53:32 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:53:32 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:53:32 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:53:34 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:53:36 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:53:39 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: New Node of type: SPRITE
+2019-09-25 17:53:55 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 17:53:55 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-25 17:57:03 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:57:03 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:57:04 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:57:05 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:57:07 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 17:58:09 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-25 17:58:09 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-25 17:58:09 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-25 17:58:10 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-25 17:58:12 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-25 18:00:12 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-25 18:00:12 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
