@@ -885,3 +885,17 @@ Caused by: org.xml.sax.SAXParseException: An invalid XML character (Unicode: 0x1
 2019-09-26 14:27:49 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: New Node of type: MAP
 2019-09-26 15:08:47 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
 2019-09-26 15:08:47 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-26 16:14:38 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-26 16:14:38 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-26 16:14:38 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-26 16:14:40 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-26 16:14:42 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-26 16:15:24 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-26 16:15:24 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit
+2019-09-26 16:15:46 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Starting initialization...
+2019-09-26 16:15:46 [main] DEBUG fr.triedge.sekai.pixis.controller.PixisController - Initialization completed
+2019-09-26 16:15:46 [main] DEBUG fr.triedge.sekai.pixis.ui.MainWindow - Windows built
+2019-09-26 16:15:48 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Open Project
+2019-09-26 16:15:50 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Open Project
+2019-09-26 16:18:27 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION CALLED: Quit
+2019-09-26 16:18:27 [AWT-EventQueue-0] DEBUG fr.triedge.sekai.pixis.controller.PixisController - ACTION DONE: Quit

@@ -42,7 +42,6 @@ import fr.triedge.sekai.pixis.controller.PixisController;
 import fr.triedge.sekai.pixis.model.EditableMap;
 import fr.triedge.sekai.pixis.model.Project;
 import fr.triedge.sekai.pixis.model.Tile;
-import fr.triedge.sekai.pixis.utils.Const;
 
 public class MapEditor extends JPanel{
 
@@ -184,13 +183,15 @@ public class MapEditor extends JPanel{
 					map.add(ti);
 				}
 			}
-			XmlHelper.storeXml(map, new File(Const.EXPORT_LOCATION+File.separator+map.getMapName()));
-			PixisUI.info("Map exported to "+Const.EXPORT_LOCATION+File.separator+map.getMapName());
+			File file = PixisUI.showSaveFile(map.getMapName());
+			if (file == null)
+				return;
+			XmlHelper.storeXml(map, file);
+			PixisUI.info("Map exported to "+file.getAbsolutePath());
 		} catch (IOException | JAXBException e) {
 			PixisUI.error("Cannot save map", e);
 			e.printStackTrace();
 		}
-		
 	}
 
 	private void redraw() {

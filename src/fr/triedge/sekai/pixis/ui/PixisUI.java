@@ -168,6 +168,17 @@ public class PixisUI {
 		return palette;
 	}
 	
+	public static File showSaveFile(String name) {
+		JFileChooser chooser = new JFileChooser();
+		chooser.setCurrentDirectory(new File(Const.EXPORT_LOCATION));
+		chooser.setSelectedFile(new File(name));
+		int res = chooser.showSaveDialog(null);
+		if (res == JFileChooser.APPROVE_OPTION) {
+			return chooser.getSelectedFile();
+		}
+		return null;
+	}
+	
 	public static File showProjectChooser() {
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter prjFilter = new FileNameExtensionFilter("Project files", "prj");
@@ -315,37 +326,4 @@ public class PixisUI {
 
 		ld.setVisible(true);
 	}
-	/*
-	public static void error(String content, Exception e) {
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("ERROR");
-		alert.setHeaderText("");
-		alert.setContentText("Error message: "+e.getMessage());
-
-		// Create expandable Exception.
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw);
-		e.printStackTrace(pw);
-		String exceptionText = sw.toString();
-
-
-		TextArea textArea = new TextArea(exceptionText);
-		textArea.setEditable(false);
-		textArea.setWrapText(true);
-
-		textArea.setMaxWidth(Double.MAX_VALUE);
-		textArea.setMaxHeight(Double.MAX_VALUE);
-		GridPane.setVgrow(textArea, Priority.ALWAYS);
-		GridPane.setHgrow(textArea, Priority.ALWAYS);
-
-		GridPane expContent = new GridPane();
-		expContent.setMaxWidth(Double.MAX_VALUE);
-		expContent.add(textArea, 0, 0);
-
-		// Set expandable Exception into the dialog pane.
-		alert.getDialogPane().setExpandableContent(expContent);
-
-		alert.showAndWait();
-	}
-	*/
 }
