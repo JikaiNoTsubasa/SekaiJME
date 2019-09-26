@@ -18,4 +18,5 @@ public class Const {
 	public static String ICONS_LOCATION				= "pixis/img/icon";
 	public static String CONFIG_LOG_LOCATION		= CONFIG_LOCATION+File.separator+"log4j2.xml";
 	public static String PROJECTS_LOCATION			= "pixis/projects";
+	public static String EXPORT_LOCATION			= "pixis/exports";
 }

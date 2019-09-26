@@ -20,21 +20,29 @@ import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.xml.bind.JAXBException;
 
+import fr.triedge.sekai.common.model.Map;
+import fr.triedge.sekai.common.model.TileEvent;
+import fr.triedge.sekai.common.model.TileEventType;
+import fr.triedge.sekai.common.model.TileInfo;
 import fr.triedge.sekai.common.utils.Utils;
+import fr.triedge.sekai.common.utils.XmlHelper;
 import fr.triedge.sekai.pixis.controller.PixisController;
 import fr.triedge.sekai.pixis.model.EditableMap;
 import fr.triedge.sekai.pixis.model.Project;
 import fr.triedge.sekai.pixis.model.Tile;
+import fr.triedge.sekai.pixis.utils.Const;
 
 public class MapEditor extends JPanel{
 
@@ -42,6 +50,7 @@ public class MapEditor extends JPanel{
 	private static final String LAYER_GROUND				= "Ground";
 	private static final String LAYER_OBJECTS				= "Objects";
 	private static final String LAYER_EVENTS				= "Events";
+	private static final String LAYER_WALK					= "Walkable";
 
 	private Project project;
 	private EditableMap editableMap;
@@ -53,6 +62,7 @@ public class MapEditor extends JPanel{
 	private JToolBar toolbar;
 	private JComboBox<Integer> comboZoomFactor;
 	private JComboBox<String> comboCurrentLayer;
+	private JCheckBox checkGrid;
 
 	private BufferedImage currentChipset;
 	private String currentLayer;
@@ -74,6 +84,7 @@ public class MapEditor extends JPanel{
 		setToolbar(new JToolBar());
 		setBtnSelectChipset(new JButton("Chipset"));
 		setBtnExportMap(new JButton("Export"));
+		setCheckGrid(new JCheckBox("Grid"));
 		setMapDisplayer(new MapDisplayer());
 		setChipsetDisplayer(new ChipsetDisplayer());
 		setSplitPane(new JSplitPane(JSplitPane.VERTICAL_SPLIT));
@@ -95,6 +106,13 @@ public class MapEditor extends JPanel{
 				redraw();
 			}
 		});
+		getCheckGrid().addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				redraw();
+			}
+		});
 
 		getSplitPane().add(getScrollMapDisplayer());
 		getSplitPane().add(getScrollChipsetDisplayer());
@@ -109,7 +127,7 @@ public class MapEditor extends JPanel{
 				updateZoomFactor(value);
 			}
 		});
-		String[] layers = {LAYER_GROUND, LAYER_OBJECTS, LAYER_EVENTS};
+		String[] layers = {LAYER_GROUND, LAYER_OBJECTS, LAYER_EVENTS, LAYER_WALK};
 		setComboCurrentLayer(new JComboBox<String>(layers));
 		getComboCurrentLayer().addItemListener(new ItemListener() {
 
@@ -117,12 +135,14 @@ public class MapEditor extends JPanel{
 			public void itemStateChanged(ItemEvent e) {
 				String value = (String)e.getItem();
 				setCurrentLayer(value);
+				redraw();
 			}
 		});
 
 		getToolbar().setFloatable(false);
 		getToolbar().add(getBtnSelectChipset());
 		getToolbar().add(getBtnExportMap());
+		getToolbar().add(getCheckGrid());
 		getToolbar().add(new JLabel("Layer:"));
 		getToolbar().add(getComboCurrentLayer());
 		getToolbar().add(new JLabel("Zoom:"));
@@ -146,13 +166,31 @@ public class MapEditor extends JPanel{
 		Graphics g = img.getGraphics();
 		drawTilesLayer(getEditableMap().getGoundTiles(), getEditableMap().getTileSize(), g);
 		drawTilesLayer(getEditableMap().getObjectTiles(), getEditableMap().getTileSize(), g);
-		File outputfile = new File("pixis/img/sprite/test.png");
+		
+		Map map = new Map();
 		try {
-			ImageIO.write(img, "png", outputfile);
-			PixisUI.info("Export done to pixis/img/sprite/test.png");
-		} catch (IOException e) {
-			PixisUI.error("Cannot save image", e);
+			map.setChipset(Utils.imageToString(getCurrentChipset()));
+			map.setMapImage(Utils.imageToString(img));
+			map.setMapName(getEditableMap().getMapName());
+			for (Tile tile : getEditableMap().getGoundTiles()) {
+				if (!tile.isWalkable()) {
+					TileInfo ti = new TileInfo();
+					TileEvent te = new TileEvent();
+					te.setEventType(TileEventType.BLOCKED);
+					ti.getTileEvents().add(te);
+					ti.setWalkable(false);
+					ti.setX(tile.getX());
+					ti.setY(tile.getY());
+					map.add(ti);
+				}
+			}
+			XmlHelper.storeXml(map, new File(Const.EXPORT_LOCATION+File.separator+map.getMapName()));
+			PixisUI.info("Map exported to "+Const.EXPORT_LOCATION+File.separator+map.getMapName());
+		} catch (IOException | JAXBException e) {
+			PixisUI.error("Cannot save map", e);
+			e.printStackTrace();
 		}
+		
 	}
 
 	private void redraw() {
@@ -184,12 +222,68 @@ public class MapEditor extends JPanel{
 			drawTilesLayer(map.getGoundTiles(), map.getTileSize(), g);
 			drawTilesLayer(map.getObjectTiles(), map.getTileSize(), g);
 
+			// Draw grid
+			if (getCheckGrid().isSelected())
+				drawGrid(rectWidth, rectHeight, map.getTileSize(), g);
+
+			// Draw walkable
+			if (getCurrentLayer() == LAYER_WALK)
+				drawWalkable(map.getGoundTiles(), map.getTileSize(), g);
+
 			// Foreground limit rectangle
 			g.setColor(Color.red);
 			g.drawRect(0, 0, rectWidth, rectHeight);
 		}
 
-		
+
+
+		private void drawWalkable(ArrayList<Tile> tiles, int tileSize, Graphics g) {
+			for (Tile tile : tiles) {
+				int bor = 4*getZoomFactor();
+				if (tile.isWalkable()) {
+					g.setColor(new Color(109,255,130,100));
+					g.fillRect(
+							tile.getX()*tileSize*getZoomFactor() + bor, 
+							tile.getY()*tileSize*getZoomFactor() + bor, 
+							tileSize*getZoomFactor() - bor*2, 
+							tileSize*getZoomFactor() - bor*2);
+					g.setColor(Color.green);
+					g.drawRect(
+							tile.getX()*tileSize*getZoomFactor() + bor, 
+							tile.getY()*tileSize*getZoomFactor() + bor, 
+							tileSize*getZoomFactor() - bor*2, 
+							tileSize*getZoomFactor() - bor*2);
+				}else {
+					g.setColor(new Color(231,0,65,100));
+					g.fillRect(
+							tile.getX()*tileSize*getZoomFactor() + bor, 
+							tile.getY()*tileSize*getZoomFactor() + bor, 
+							tileSize*getZoomFactor() - bor*2, 
+							tileSize*getZoomFactor() - bor*2);
+					g.setColor(Color.red);
+					g.drawRect(
+							tile.getX()*tileSize*getZoomFactor() + bor, 
+							tile.getY()*tileSize*getZoomFactor() + bor, 
+							tileSize*getZoomFactor() - bor*2, 
+							tileSize*getZoomFactor() - bor*2);
+				}
+			}
+		}
+
+		private void drawGrid(int width, int height, int tileSize, Graphics g) {
+			for (int x = 0; x < width; ++x) {
+				if ((x/getZoomFactor()) % tileSize == 0) {
+					g.setColor(Color.lightGray);
+					g.drawLine(x, 0, x, height);
+				}
+			}
+			for (int y = 0; y < height; ++y) {
+				if ((y/getZoomFactor()) % tileSize == 0) {
+					g.setColor(Color.lightGray);
+					g.drawLine(0, y, width, y);
+				}
+			}
+		}
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -197,7 +291,20 @@ public class MapEditor extends JPanel{
 
 		@Override
 		public void mousePressed(MouseEvent e) {
-			updateTile(e);
+			if (SwingUtilities.isLeftMouseButton(e)) {
+				leftClick(e);
+			}else if(SwingUtilities.isRightMouseButton(e)) {
+				rightClick(e);
+			}
+		}
+
+		private void updateWalkableTile(int x, int y, boolean b) {
+			Tile tile = getTileAt(getEditableMap().getGoundTiles(), x, y);
+			if (tile == null)
+				return;
+			tile.setWalkable(b);
+			redraw();
+			saveProject();
 		}
 
 		@Override
@@ -214,44 +321,155 @@ public class MapEditor extends JPanel{
 
 		@Override
 		public void mouseDragged(MouseEvent e) {
-			updateTile(e);
+			int b1 = MouseEvent.BUTTON1_DOWN_MASK;
+			int b3 = MouseEvent.BUTTON3_DOWN_MASK;
+			if ((e.getModifiersEx() & (b1 | b3)) == b1) {
+				leftClick(e);
+			}else if((e.getModifiersEx() & (b1 | b3)) == b3) {
+				rightClick(e);
+			}
+		}
+
+		public void leftClick(MouseEvent e) {
+			int x = Utils.roundDown((e.getX()/getEditableMap().getTileSize())/getZoomFactor());
+			int y = Utils.roundDown((e.getY()/getEditableMap().getTileSize())/getZoomFactor());
+			switch (getCurrentLayer()) {
+			case LAYER_GROUND:
+				if (getSelectedTile() != null) {
+					updateTile(x,y);
+				}
+				break;
+			case LAYER_OBJECTS:
+				if (getSelectedTile() != null) {
+					updateTile(x,y);
+				}
+				break;
+			case LAYER_WALK:
+				updateWalkableTile(x,y,true);
+				break;
+			default:
+				break;
+			}
+		}
+
+		public void rightClick(MouseEvent e) {
+			int x = Utils.roundDown((e.getX()/getEditableMap().getTileSize())/getZoomFactor());
+			int y = Utils.roundDown((e.getY()/getEditableMap().getTileSize())/getZoomFactor());
+			switch (getCurrentLayer()) {
+			case LAYER_GROUND:
+				fillTiles(e.getX(), e.getY());
+				break;
+			case LAYER_OBJECTS:
+				break;
+			case LAYER_WALK:
+				updateWalkableTile(x,y,false);
+				break;
+			default:
+				break;
+			}
 		}
 
 		@Override
 		public void mouseMoved(MouseEvent e) {
-			
-		}
-		
-		private void updateTile(MouseEvent e) {
-			if (e.getButton() == MouseEvent.BUTTON1) {
-				if (getSelectedTile() != null) {
-					int x = Utils.roundDown((e.getX()/getEditableMap().getTileSize())/getZoomFactor());
-					int y = Utils.roundDown((e.getY()/getEditableMap().getTileSize())/getZoomFactor());
-					//System.out.println("Clicked tile: "+x+":"+y);
-					getSelectedTile().setX(x);
-					getSelectedTile().setY(y);
-					Tile newTile = getSelectedTile().copy();
 
-					switch(getCurrentLayer()) {
-					case LAYER_GROUND:
-						removeTilesAt(getEditableMap().getGoundTiles(), x, y);
-						getEditableMap().getGoundTiles().add(newTile);
-						break;
-					case LAYER_OBJECTS:
-						removeTilesAt(getEditableMap().getObjectTiles(), x, y);
-						getEditableMap().getObjectTiles().add(newTile);
-						break;
-					default:
-						break;
-					}
-					//System.out.println("Created new: "+newTile);
-					redraw();
-					saveProject();
+		}
+
+		private void fillTiles(int mouseX, int mouseY) {
+			if (getSelectedTile() != null) {
+				int x = Utils.roundDown((mouseX/getEditableMap().getTileSize())/getZoomFactor());
+				int y = Utils.roundDown((mouseY/getEditableMap().getTileSize())/getZoomFactor());
+
+				ArrayList<Tile> currentLayer = getEditableMap().getGoundTiles();
+				switch (getCurrentLayer()) {
+				case LAYER_OBJECTS:
+					currentLayer = getEditableMap().getObjectTiles();
+					break;
 				}
+
+				Tile target = getTileAt(currentLayer, x, y);
+				fillTilesProcess(target, currentLayer);
+			}
+		}
+
+		private void fillTilesProcess(Tile target, ArrayList<Tile> currentLayer) {
+			ArrayList<Tile> tilesToUpdate = new ArrayList<>();
+			fillTile(tilesToUpdate, currentLayer, target, target);
+			for (Tile tile : tilesToUpdate) {
+				updateTile(tile.getX(), tile.getY());
+			}
+		}
+
+		private void fillTile(ArrayList<Tile> tilesToUpdate,ArrayList<Tile> currentLayer, Tile currentTile, Tile previousTile) {
+			// System.out.println("");
+			// System.out.println("Current: "+currentTile);
+			// System.out.println("Previous: "+previousTile);
+			if (tilesToUpdate.contains(currentTile))
+				return;
+			if (currentTile.getChipsetX() == previousTile.getChipsetX() && currentTile.getChipsetY() == previousTile.getChipsetY()) {
+				tilesToUpdate.add(currentTile);
+				//System.out.println("Added: "+currentTile);
+			}
+			// Get Tile up
+			if (currentTile.getY()-1 >= 0) {
+				Tile up = getTileAt(currentLayer, currentTile.getX(), currentTile.getY()-1);
+				if (up != null)
+					fillTile(tilesToUpdate, currentLayer, up, currentTile);
+			}
+
+			// Get Tile down
+			if (currentTile.getY()+1 <= getEditableMap().getMapHeight()) {
+				Tile down = getTileAt(currentLayer, currentTile.getX(), currentTile.getY()+1);
+				if (down != null)
+					fillTile(tilesToUpdate, currentLayer, down, currentTile);
+			}
+
+			// Get Tile right
+			if (currentTile.getX()+1 <= getEditableMap().getMapHeight()) {
+				Tile right = getTileAt(currentLayer, currentTile.getX()+1, currentTile.getY());
+				if (right != null)
+					fillTile(tilesToUpdate, currentLayer, right, currentTile);
+			}
+
+			// Get Tile right
+			if (currentTile.getX()-1 >= 0) {
+				Tile left = getTileAt(currentLayer, currentTile.getX()-1, currentTile.getY());
+				if (left != null)
+					fillTile(tilesToUpdate, currentLayer, left, currentTile);
+			}
+		}
+
+
+		/**
+		 * 
+		 * @param x - X in grid not px
+		 * @param y - Y in grid not px
+		 */
+		private void updateTile(int x, int y) {
+			if (getSelectedTile() != null) {
+				if (x >= getEditableMap().getMapWidth() || y >= getEditableMap().getMapHeight())
+					return;
+				getSelectedTile().setX(x);
+				getSelectedTile().setY(y);
+				Tile newTile = getSelectedTile().copy();
+
+				switch(getCurrentLayer()) {
+				case LAYER_GROUND:
+					removeTilesAt(getEditableMap().getGoundTiles(), x, y);
+					getEditableMap().getGoundTiles().add(newTile);
+					break;
+				case LAYER_OBJECTS:
+					removeTilesAt(getEditableMap().getObjectTiles(), x, y);
+					getEditableMap().getObjectTiles().add(newTile);
+					break;
+				default:
+					break;
+				}
+				redraw();
+				saveProject();
 			}
 		}
 	}
-	
+
 	private void drawTilesLayer(ArrayList<Tile> tiles, int tileSize, Graphics g) {
 		for (Tile tile : tiles) {
 			if (getCurrentChipset() == null) {
@@ -272,7 +490,14 @@ public class MapEditor extends JPanel{
 					null);
 		}
 	}
-	
+
+	private Tile getTileAt(ArrayList<Tile> tiles, int x, int y) {
+		for (Tile tile : tiles)
+			if (tile.getX() == x && tile.getY() == y)
+				return tile;
+		return null;
+	}
+
 	private void removeTilesAt(ArrayList<Tile> tiles, int x, int y) {
 		Iterator<Tile> it = tiles.iterator();
 		while(it.hasNext()) {
@@ -281,7 +506,7 @@ public class MapEditor extends JPanel{
 				it.remove();
 		}
 	}
-	
+
 	private void saveProject() {
 		try {
 			getProject().save();
@@ -545,6 +770,14 @@ public class MapEditor extends JPanel{
 
 	public void setBtnExportMap(JButton btnExportMap) {
 		this.btnExportMap = btnExportMap;
+	}
+
+	public JCheckBox getCheckGrid() {
+		return checkGrid;
+	}
+
+	public void setCheckGrid(JCheckBox checkGrid) {
+		this.checkGrid = checkGrid;
 	}
 
 }

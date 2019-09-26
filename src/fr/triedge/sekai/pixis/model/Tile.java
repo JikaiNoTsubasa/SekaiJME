@@ -9,6 +9,7 @@ public class Tile {
 	private int x,y;
 	private TileType type;
 	private int chipsetX, chipsetY;
+	private boolean walkable = true;
 	
 	public Tile() {
 	}
@@ -78,6 +79,16 @@ public class Tile {
 		tile.setChipsetX(this.chipsetX);
 		tile.setChipsetY(this.chipsetY);
 		tile.setType(this.type);
+		tile.setWalkable(this.walkable);;
 		return tile;
+	}
+
+	public boolean isWalkable() {
+		return walkable;
+	}
+
+	@XmlAttribute(name="IsWalkable")
+	public void setWalkable(boolean walkable) {
+		this.walkable = walkable;
 	}
 }

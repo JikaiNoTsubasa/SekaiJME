@@ -109,6 +109,8 @@ public class PixisController {
 	public void actionOpenProject() {
 		log.debug("ACTION CALLED: Open Project");
 		File file = PixisUI.showProjectChooser();
+		if (file == null)
+			return;
 		if (file.getName().endsWith(Const.EXT_PROJECT)) {
 			try {
 				Project prj = Storage.loadProject(file);
